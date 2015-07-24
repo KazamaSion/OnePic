@@ -1,0 +1,12 @@
+#drop-zone {
+  height: 100%;
+  width: 100%;
+}
+body{
+  overflow-y: hidden;
+}
+
+#crop > input {
+  width: 60px;
+  margin-right: 2px;
+}

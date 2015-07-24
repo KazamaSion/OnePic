@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>vue-validator prototype</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ $data | json }}</h1>
+      <validator>
+        <form>
+          <input type="text" name="msg" v-model="msg">
+          <input type="text" name="foo">
+          <p>{{msg}}:{{foo}}</p>
+          <p>{{ $data | json }}</p>
+        </form>
+      </validator>
+    </div>
+    <script src="./prototype.js"></script>
+  </body>
+</html>
