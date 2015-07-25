@@ -27,13 +27,13 @@ export default async function({audioSource, imageSource, idr, imageSizes, target
 
   var tmpImgPath = tempPathBase + path.extname(imageSource)
 
-  await Bluebird.fromNode(callback => {  var gm = require('gm') 
-  
-  
-  gm(imageSource).resize(})
-  
-  
-
+  await Bluebird.fromNode(callback => {  
+    var gm = require('gm')
+    var width = imageSizes.width === 0 ? null : imageSizes.width
+    var height = imageSizes.height === 0 ? null : imageSizes.height
+    gm(imageSource).resize(width, height).write(tmpImgPath, callback)
+    
+  }
   
   await fs.copyAsync(imageSource, tmpImgPath)
 
@@ -42,8 +42,6 @@ export default async function({audioSource, imageSource, idr, imageSizes, target
     soraPath: path.join(libDir, 'sorathread.dll'),
     imagePath: tmpImgPath,
     numFrames: audioLen + 1,
-    height: imageSizes.height === 0 ? 'last.height()' : `"${imageSizes.height}"`,
-    width: imageSizes.width === 0 ? 'last.width()' : `"${imageSizes.width}"`,
     crop
   })
 
