@@ -33,7 +33,7 @@ export default async function({audioSource, imageSource, idr, imageSizes, target
     var height = imageSizes.height === 0 ? null : imageSizes.height
     gm(imageSource).resize(width, height).write(tmpImgPath, callback)
     
-  }
+  })
   
   await fs.copyAsync(imageSource, tmpImgPath)
 
